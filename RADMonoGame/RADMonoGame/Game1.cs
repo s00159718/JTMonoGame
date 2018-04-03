@@ -1,21 +1,35 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Media;
 
 namespace RADMonoGame
 {
     /// <summary>
     /// This is the main type for your game.
-    /// </summary>
+    /// </summary>dfg
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Map map;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.IsFullScreen = false;
+
+            //fixed screen resolution
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 700;
+
+            graphics.ApplyChanges();
         }
 
         /// <summary>
@@ -27,7 +41,7 @@ namespace RADMonoGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            map = new Map();
             base.Initialize();
         }
 
@@ -39,6 +53,24 @@ namespace RADMonoGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+
+
+
+            Tile.Content = Content;//t
+            map.Generate(new int[,] {
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+                {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+                {3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3},
+            }, 64);
 
             // TODO: use this.Content to load your game content here
         }
@@ -74,10 +106,18 @@ namespace RADMonoGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
-            // TODO: Add your drawing code here
 
+            map.Draw(spriteBatch);
+
+
+
+
+
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
 }
+

@@ -27,3 +27,4 @@ C:\Users\TOMMY\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug
 C:\Users\TOMMY\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug\Content\Tile1.xnb
 C:\Users\TOMMY\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug\Content\Tile2.xnb
 C:\Users\TOMMY\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug\Content\Tile3.xnb
+C:\Users\TOMMY\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug\Content\Message.xnb

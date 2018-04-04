@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Media;
+using System.Threading;
 
 namespace RADMonoGame
 {
@@ -18,6 +19,10 @@ namespace RADMonoGame
 
         Map map;
 
+        SpriteFont font;
+        float Time = 0;
+        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -30,6 +35,9 @@ namespace RADMonoGame
             graphics.PreferredBackBufferHeight = 700;
 
             graphics.ApplyChanges();
+
+
+            
         }
 
         /// <summary>
@@ -58,6 +66,7 @@ namespace RADMonoGame
             Song song = Content.Load<Song>("8bit");
             MediaPlayer.Play(song);
 
+            font = Content.Load<SpriteFont>("Message");
 
             Tile.Content = Content;//t
             map.Generate(new int[,] {
@@ -96,6 +105,8 @@ namespace RADMonoGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            Time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -113,7 +124,7 @@ namespace RADMonoGame
 
             map.Draw(spriteBatch);
 
-
+            spriteBatch.DrawString(font, "Time Passed: " + Time.ToString("0.00"), new Vector2(300, 50), Color.Black);
 
 
 

@@ -19,8 +19,11 @@ namespace RADMonoGame
         SpriteFont font;
         float Time = 0;
 
-        Texture2D simpleSprite;
+        Texture2D playerSprite;
         PlayerSprite player;
+
+        Texture2D collectableSprite;
+        Collectable collectable;
 
         public Game1()
         {
@@ -68,9 +71,11 @@ namespace RADMonoGame
                 {3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
             }, 64);
 
-            simpleSprite = Content.Load<Texture2D>("sprite");
+            playerSprite = Content.Load<Texture2D>("sprite");
+            collectableSprite = Content.Load<Texture2D>("collectableSprite");
 
-            player = new PlayerSprite(this, simpleSprite, new Point(600, 350));
+            player = new PlayerSprite(this, playerSprite, new Point(100, 300));
+            collectable = new Collectable(this, collectableSprite, new Point(0, 0));
         }
 
         protected override void UnloadContent()
@@ -93,9 +98,9 @@ namespace RADMonoGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             map.Draw(spriteBatch);
+            player.Draw(gameTime);
             spriteBatch.DrawString(font, "Time Passed: " + Time.ToString("0.00"), new Vector2(300, 50), Color.Black);
             spriteBatch.End();
-            player.Draw(gameTime);
             base.Draw(gameTime);
         }
     }

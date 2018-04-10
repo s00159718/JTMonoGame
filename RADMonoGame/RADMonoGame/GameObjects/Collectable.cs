@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RADMonoGame.GameObjects
 {
-    class PlayerSprite : DrawableGameComponent
+    class Collectable : DrawableGameComponent
     {
         public Texture2D Image;
         public Point Position;
@@ -20,7 +20,7 @@ namespace RADMonoGame.GameObjects
         public Point previousPosition;
         public Color tint = Color.White;
 
-        public PlayerSprite(Game game, Texture2D spriteImage, Point startPosition) : base(game)
+        public Collectable(Game game, Texture2D spriteImage, Point startPosition) : base(game)
         {
             game.Components.Add(this);
             Image = spriteImage;
@@ -34,23 +34,7 @@ namespace RADMonoGame.GameObjects
 
         public override void Update(GameTime gameTime)
         {
-            previousPosition = Position;
 
-            if(Keyboard.GetState().IsKeyDown(Keys.W))
-                Position += new Point(0, -speed);
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-                Position += new Point(0, speed);
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-                Position += new Point(-speed, 0);
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-                Position += new Point(speed, 0);
-
-            BoundingRect = new Rectangle(
-                Position.X,
-                Position.Y,
-                Image.Width,
-                Image.Height);
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

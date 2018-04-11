@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Media;
 using System.Threading;
 using RADMonoGame.GameObjects;
+using System.Linq;
 
 namespace RADMonoGame
 {
@@ -19,11 +20,15 @@ namespace RADMonoGame
         SpriteFont font;
         float Time = 0;
 
+        int Score = 0;
+
         Texture2D playerSprite;
         PlayerSprite player;
 
         Texture2D collectableSprite;
-        Collectable collectable;
+        List<Collectable> collectablesList;
+
+        Random randomNumber = new Random();
 
         public Game1()
         {
@@ -75,7 +80,12 @@ namespace RADMonoGame
             collectableSprite = Content.Load<Texture2D>("collectableSprite");
 
             player = new PlayerSprite(this, playerSprite, new Point(100, 300));
-            collectable = new Collectable(this, collectableSprite, new Point(0, 0));
+
+            collectablesList = new List<Collectable>();
+            for (int i = 0; i < 6; i++)
+            {
+                collectablesList.Add(new Collectable(this, collectableSprite, new Point(randomNumber.Next(0, 1200), randomNumber.Next(0, 620))));
+            }
         }
 
         protected override void UnloadContent()
@@ -88,6 +98,25 @@ namespace RADMonoGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            for (int i = 0; i < collectablesList.Count; i++)
+            {
+                if(collectablesList[i].BoundingRect.Intersects(player.BoundingRect))
+                {
+                    collectablesList[i].Visible = false;
+                    collectablesList.RemoveAt(i);
+                    Score += 1;
+                    i--;
+                }
+            }
+
+            if(collectablesList.Count == 0)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    collectablesList.Add(new Collectable(this, collectableSprite, new Point(randomNumber.Next(0, 1200), randomNumber.Next(0, 620))));
+                }
+            }
+
             Time += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             base.Update(gameTime);
@@ -99,7 +128,12 @@ namespace RADMonoGame
             spriteBatch.Begin();
             map.Draw(spriteBatch);
             player.Draw(gameTime);
-            spriteBatch.DrawString(font, "Time Passed: " + Time.ToString("0.00"), new Vector2(300, 50), Color.Black);
+            foreach(Collectable i in collectablesList)
+            {
+                i.Draw(gameTime);
+            }
+            spriteBatch.DrawString(font, "Time Passed: " + Time.ToString("0.00"), new Vector2(140, 20), Color.Black);
+            spriteBatch.DrawString(font, "Score: " + Score.ToString(), new Vector2(20, 20), Color.Black);
             spriteBatch.End();
             base.Draw(gameTime);
         }

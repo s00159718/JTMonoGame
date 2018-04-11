@@ -59,3 +59,4 @@ C:\Users\James\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug
 C:\Users\James\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\James\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\obj\x86\Debug\RADMonoGame.csprojResolveAssemblyReference.cache
 C:\Users\James\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug\Content\sprite.xnb
+C:\Users\James\Source\Repos\JTMonoGame\RADMonoGame\RADMonoGame\bin\Windows\Debug\Content\collectableSprite.xnb

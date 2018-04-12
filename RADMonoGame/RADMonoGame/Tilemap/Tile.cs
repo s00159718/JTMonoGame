@@ -14,7 +14,6 @@ namespace RADMonoGame
     {
         //it's protected, so texture is only used in this class
         protected Texture2D texture;
-
         private Rectangle rectangle;
         public Rectangle Rectangle
         {

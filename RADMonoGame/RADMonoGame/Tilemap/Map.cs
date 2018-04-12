@@ -18,7 +18,6 @@ namespace RADMonoGame
         }
 
         //Width and height of all tiles
-
         private int width, height;
         public int Width
         {
@@ -39,7 +38,7 @@ namespace RADMonoGame
                 {
                     int number = map[y, x];
 
-                    if (number > 0)//if its 0 it leaves a blank, 1 and up draw tiles depending on how many you have
+                    if (number > 0)//if its 0 it leaves a blank space, 1 and up draw tiles depending on how many you have
                         collisionTiles.Add(new CollisionTiles(number, new Rectangle(x * size, y * size, size, size)));
 
                     //ensures width and height is not 1 tile offside

@@ -37,7 +37,7 @@ namespace RADMonoGame
 
             graphics.IsFullScreen = false;
 
-            //fixed screen resolution
+            //fixed the screen resolution
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 700;
 
@@ -55,13 +55,13 @@ namespace RADMonoGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //load music
+            //loads the music
             Song song = Content.Load<Song>("8bit");
             MediaPlayer.Play(song);
 
             font = Content.Load<SpriteFont>("Message");
 
-            Tile.Content = Content;//t
+            Tile.Content = Content;//sets which tiles are place where within the game
             map.Generate(new int[,] {
                 {3,3,3,3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3},
                 {2,2,2,2,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3},
@@ -76,11 +76,14 @@ namespace RADMonoGame
                 {3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
             }, 64);
 
+            //Loads player and collectables
             playerSprite = Content.Load<Texture2D>("sprite");
             collectableSprite = Content.Load<Texture2D>("collectableSprite");
 
+            //Sets the players spawnpoint
             player = new PlayerSprite(this, playerSprite, new Point(100, 300));
 
+            //Sets the boundaries for where the collectables can spawn within
             collectablesList = new List<Collectable>();
             for (int i = 0; i < 6; i++)
             {
@@ -98,6 +101,7 @@ namespace RADMonoGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            //Counts the number of collectables that you have gotten
             for (int i = 0; i < collectablesList.Count; i++)
             {
                 if(collectablesList[i].BoundingRect.Intersects(player.BoundingRect))
@@ -132,6 +136,7 @@ namespace RADMonoGame
             {
                 i.Draw(gameTime);
             }
+            //Displays time and score
             spriteBatch.DrawString(font, "Time Passed: " + Time.ToString("0.00"), new Vector2(140, 20), Color.Black);
             spriteBatch.DrawString(font, "Score: " + Score.ToString(), new Vector2(20, 20), Color.Black);
             spriteBatch.End();

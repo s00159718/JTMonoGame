@@ -4,12 +4,12 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/James/Source/Repos/JTMonoGame/RADMonoGame/RADMonoGame/Content/8bit.mp3</File>
-    <File>C:/Users/James/Source/Repos/JTMonoGame/RADMonoGame/RADMonoGame/Content/Tile1.jpg</File>
-    <File>C:/Users/James/Source/Repos/JTMonoGame/RADMonoGame/RADMonoGame/Content/Tile2.png</File>
-    <File>C:/Users/James/Source/Repos/JTMonoGame/RADMonoGame/RADMonoGame/Content/Tile3.png</File>
-    <File>C:/Users/James/Source/Repos/JTMonoGame/RADMonoGame/RADMonoGame/Content/Message.spritefont</File>
-    <File>C:/Users/James/Source/Repos/JTMonoGame/RADMonoGame/RADMonoGame/Content/sprite.png</File>
-    <File>C:/Users/James/Source/Repos/JTMonoGame/RADMonoGame/RADMonoGame/Content/collectableSprite.png</File>
+    <File>C:/Users/TOMMY/Source/Repos/JTMonoGame3/RADMonoGame/RADMonoGame/Content/8bit.mp3</File>
+    <File>C:/Users/TOMMY/Source/Repos/JTMonoGame3/RADMonoGame/RADMonoGame/Content/Tile1.jpg</File>
+    <File>C:/Users/TOMMY/Source/Repos/JTMonoGame3/RADMonoGame/RADMonoGame/Content/Tile2.png</File>
+    <File>C:/Users/TOMMY/Source/Repos/JTMonoGame3/RADMonoGame/RADMonoGame/Content/Tile3.png</File>
+    <File>C:/Users/TOMMY/Source/Repos/JTMonoGame3/RADMonoGame/RADMonoGame/Content/Message.spritefont</File>
+    <File>C:/Users/TOMMY/Source/Repos/JTMonoGame3/RADMonoGame/RADMonoGame/Content/sprite.png</File>
+    <File>C:/Users/TOMMY/Source/Repos/JTMonoGame3/RADMonoGame/RADMonoGame/Content/collectableSprite.png</File>
   </SourceFiles>
 </SourceFileCollection>
